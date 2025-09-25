@@ -15,15 +15,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #2c4a5a 0%, #1a2d36 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
+            margin: 0;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
         }
 
@@ -137,7 +139,7 @@
 
         .tab-content {
             display: none;
-            height: calc(100vh - 200px);
+            height: calc(100vh - 120px);
             min-height: 600px;
         }
 
@@ -197,40 +199,48 @@
         /* Responsive design */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 5px;
             }
 
             .logo-container {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
+                gap: 10px;
             }
 
             .logos-wrapper {
                 justify-content: center;
-                margin-bottom: 10px;
+                margin-bottom: 8px;
             }
 
             .logo {
-                width: 70px;
-                height: 70px;
+                width: 40px;
+                height: 40px;
             }
 
             .dsa-logo {
-                width: 50px;
-                height: 50px;
+                width: 30px;
+                height: 30px;
             }
 
             .header-text {
                 text-align: center;
             }
 
+            .header {
+                padding: 10px 15px;
+            }
+
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.4rem;
             }
 
             .header p {
-                font-size: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .partnership-text {
+                font-size: 0.7rem;
             }
 
             .tabs {
@@ -238,12 +248,12 @@
             }
 
             .tab {
-                padding: 15px;
+                padding: 12px;
                 font-size: 1rem;
             }
 
             .tab-content {
-                height: calc(100vh - 250px);
+                height: calc(100vh - 140px);
             }
         }
     </style>
