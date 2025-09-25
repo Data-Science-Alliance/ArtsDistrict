@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c4a5a 0%, #1a2d36 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -23,26 +23,72 @@
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: linear-gradient(135deg, #2c4a5a 0%, #1a2d36 100%);
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .dsa-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+
+        .logos-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        .partnership-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 8px;
+            font-style: italic;
+            color: #e8f4f8;
         }
 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.5px;
         }
 
         .header p {
             font-size: 1.1rem;
             opacity: 0.9;
+            color: #e8f4f8;
+            font-weight: 300;
         }
 
         .tabs {
@@ -63,16 +109,19 @@
             color: #495057;
             transition: all 0.3s ease;
             position: relative;
+            border-radius: 0;
+            letter-spacing: 0.3px;
         }
 
         .tab:hover {
             background: #e9ecef;
             transform: translateY(-2px);
+            color: #2c4a5a;
         }
 
         .tab.active {
             background: white;
-            color: #2c3e50;
+            color: #2c4a5a;
             box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
         }
 
@@ -83,7 +132,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c4a5a 0%, #1a2d36 100%);
         }
 
         .tab-content {
@@ -122,7 +171,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #2c4a5a;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
@@ -151,6 +200,31 @@
                 padding: 10px;
             }
 
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .logos-wrapper {
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .dsa-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+
             .header h1 {
                 font-size: 2rem;
             }
@@ -177,8 +251,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Summer Arts Fest Data Analysis</h1>
-            <p>Arts District Liberty Station - September 13, 2025</p>
+            <div class="logo-container">
+                <div class="logos-wrapper">
+                    <img src="arts-district.jpg" alt="Arts District Liberty Station Logo" class="logo">
+                    <img src="DSA-Logo-Icon Only-White-01.png" alt="Data Science Alliance Logo" class="dsa-logo">
+                </div>
+                <div class="header-text">
+                    <h1>Summer Arts Fest Data Analysis</h1>
+                    <p>Arts District Liberty Station - September 13, 2025</p>
+                    <p class="partnership-text">A collaboration between Arts District Liberty Station & Data Science Alliance</p>
+                </div>
+            </div>
         </div>
 
         <div class="tabs">
