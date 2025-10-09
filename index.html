@@ -277,7 +277,11 @@
         <div class="tabs">
             <button class="tab active" onclick="openTab(event, 'heatmap-tab')" data-target="HeatMap.html">
                 <span class="tab-icon">📊</span>
-                Event Heatmap
+                Manual Count Heatmap
+            </button>
+            <button class="tab" onclick="openTab(event, 'auto-heatmap-tab')" data-target="automatedHeatMap.html">
+                <span class="tab-icon">🤖</span>
+                Automated Count Heatmap
             </button>
             <button class="tab" onclick="openTab(event, 'zipcode-tab')" data-target="ZipCodeMap.html">
                 <span class="tab-icon">🗺️</span>
@@ -285,11 +289,12 @@
             </button>
         </div>
 
+        <!-- Manual Heatmap Tab -->
         <div id="heatmap-tab" class="tab-content active">
             <div class="iframe-container">
                 <div class="loading" id="loading-heatmap">
                     <div class="loading-spinner"></div>
-                    <p>Loading Event Heatmap...</p>
+                    <p>Loading Manual Count Heatmap...</p>
                 </div>
                 <div class="error-message" id="error-heatmap">
                     <h3>⚠️ Unable to load HeatMap.html</h3>
@@ -299,6 +304,22 @@
             </div>
         </div>
 
+        <!-- Automated Heatmap Tab -->
+        <div id="auto-heatmap-tab" class="tab-content">
+            <div class="iframe-container">
+                <div class="loading" id="loading-auto-heatmap">
+                    <div class="loading-spinner"></div>
+                    <p>Loading Automated Count Heatmap...</p>
+                </div>
+                <div class="error-message" id="error-auto-heatmap">
+                    <h3>⚠️ Unable to load automatedHeatMap.html</h3>
+                    <p>Please ensure the file exists in the same directory as index.html</p>
+                </div>
+                <iframe id="iframe-auto-heatmap" src="" onload="hideLoading('auto-heatmap')" onerror="showError('auto-heatmap')"></iframe>
+            </div>
+        </div>
+
+        <!-- ZIP Code Tab -->
         <div id="zipcode-tab" class="tab-content">
             <div class="iframe-container">
                 <div class="loading" id="loading-zipcode">
@@ -309,7 +330,7 @@
                     <h3>⚠️ Unable to load ZipCodeMap.html</h3>
                     <p>Please ensure the file exists in the same directory as index.html</p>
                 </div>
-                <iframe id="iframe-zipcode" onload="hideLoading('zipcode')" onerror="showError('zipcode')"></iframe>
+                <iframe id="iframe-zipcode" src="" onload="hideLoading('zipcode')" onerror="showError('zipcode')"></iframe>
             </div>
         </div>
     </div>
@@ -335,8 +356,9 @@
             evt.currentTarget.classList.add("active");
             
             // Load the iframe source if not already loaded (lazy loading)
-            const iframe = document.getElementById('iframe-' + tabName.replace('-tab', ''));
-            if (iframe && !iframe.src.includes('.html')) {
+            const iframeId = 'iframe-' + tabName.replace('-tab', '');
+            const iframe = document.getElementById(iframeId);
+            if (iframe && (!iframe.src || iframe.src === window.location.href)) {
                 const targetFile = evt.currentTarget.getAttribute('data-target');
                 iframe.src = targetFile;
             }
@@ -356,15 +378,13 @@
             if (error) error.style.display = 'block';
         }
 
-        // Initialize - load the first tab's content immediately, others on demand
-        document.addEventListener('DOMContentLoaded', function() {
-            // The heatmap iframe is already loaded via src attribute
-            // ZIP code map will be loaded when tab is clicked (lazy loading)
-        });
-
         // Handle iframe load errors more gracefully
         document.getElementById('iframe-heatmap').addEventListener('error', function() {
             showError('heatmap');
+        });
+        
+        document.getElementById('iframe-auto-heatmap').addEventListener('error', function() {
+            showError('auto-heatmap');
         });
         
         document.getElementById('iframe-zipcode').addEventListener('error', function() {
@@ -374,6 +394,8 @@
         // Add loading timeout (fallback)
         setTimeout(function() {
             hideLoading('heatmap');
+            hideLoading('auto-heatmap');
+            hideLoading('zipcode');
         }, 10000); // Hide loading after 10 seconds max
     </script>
 </body>
