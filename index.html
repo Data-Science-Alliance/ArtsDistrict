@@ -279,10 +279,12 @@
                 <span class="tab-icon">📊</span>
                 Manual Count Heatmap
             </button>
+            <!-- AUTOMATED TAB COMMENTED OUT
             <button class="tab" onclick="openTab(event, 'auto-heatmap-tab')" data-target="automatedHeatMap.html">
                 <span class="tab-icon">🤖</span>
                 Automated Count Heatmap
             </button>
+            -->
             <button class="tab" onclick="openTab(event, 'zipcode-tab')" data-target="ZipCodeMap.html">
                 <span class="tab-icon">🗺️</span>
                 ZIP Code Analysis
@@ -304,7 +306,7 @@
             </div>
         </div>
 
-        <!-- Automated Heatmap Tab
+        <!-- AUTOMATED HEATMAP TAB COMMENTED OUT
         <div id="auto-heatmap-tab" class="tab-content">
             <div class="iframe-container">
                 <div class="loading" id="loading-auto-heatmap">
@@ -317,7 +319,8 @@
                 </div>
                 <iframe id="iframe-auto-heatmap" src="" onload="hideLoading('auto-heatmap')" onerror="showError('auto-heatmap')"></iframe>
             </div>
-        </div> -->
+        </div>
+        -->
 
         <!-- ZIP Code Tab -->
         <div id="zipcode-tab" class="tab-content">
@@ -383,9 +386,11 @@
             showError('heatmap');
         });
         
+        /* AUTOMATED TAB ERROR HANDLER COMMENTED OUT
         document.getElementById('iframe-auto-heatmap').addEventListener('error', function() {
             showError('auto-heatmap');
         });
+        */
         
         document.getElementById('iframe-zipcode').addEventListener('error', function() {
             showError('zipcode');
@@ -394,7 +399,7 @@
         // Add loading timeout (fallback)
         setTimeout(function() {
             hideLoading('heatmap');
-            hideLoading('auto-heatmap');
+            // hideLoading('auto-heatmap'); // COMMENTED OUT
             hideLoading('zipcode');
         }, 10000); // Hide loading after 10 seconds max
     </script>
